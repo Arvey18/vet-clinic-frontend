@@ -1,7 +1,13 @@
-import './App.css';
+import Routes from './routing';
+import './App.scss';
 
 function App() {
-  return <h1 className='text-4xl font-bold underline'>Vet Clinic System</h1>;
+  console.log('app start');
+  return (
+    <>
+      <Routes />
+    </>
+  );
 }
 
 export default App;
