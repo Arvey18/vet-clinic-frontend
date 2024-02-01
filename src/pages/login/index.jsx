@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // layouts
 import FullLayout from '../../layouts/fullLayout';
@@ -12,6 +13,9 @@ import Logo from '../../assets/images/vet_clinic_logo.png';
 const Login = () => {
   // initialize auth store
   const { updateLoading, loginUser, error, message, loading } = authStore();
+
+  // initialize hook navigate
+  const navigate = useNavigate();
 
   // creating refs for input fields
   // using it to get values upon login
@@ -120,12 +124,15 @@ const Login = () => {
                       </svg>
                     )}
                   </button>
-                  <p className='text-sm font-light text-gray-500 dark:text-gray-400'>
+                  <div className='text-sm font-light text-gray-500 dark:text-gray-400'>
                     Don’t have an account yet?{' '}
-                    <a href='#' className='font-medium text-primary-600 hover:underline dark:text-primary-500'>
+                    <div
+                      onClick={() => navigate('/register')}
+                      className='font-medium inline cursor-pointer text-primary-600 hover:underline dark:text-primary-500'
+                    >
                       Sign up
-                    </a>
-                  </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

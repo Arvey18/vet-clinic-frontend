@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import { jwtDecode } from 'jwt-decode';
+// import { useNavigate } from 'react-router-dom';
 
 // constants
 import serverConfig from '../constants/serverConfig';
@@ -43,6 +44,48 @@ const authStore = create((set) => ({
   loading: false,
   // functions
   updateLoading: (status) => set(() => ({ loading: status })),
+  updateError: (status, message) =>
+    set(() => ({
+      success: false,
+      error: status,
+      message,
+      loading: false,
+    })),
+  registerUser: async (email, password) => {
+    const payload = {
+      email,
+      password,
+    };
+    try {
+      const { API_BASE_URL } = serverConfig;
+      const options = {
+        baseURL: `${API_BASE_URL}/api/auth/register-users`,
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        timeout: 60000,
+        data: { ...payload },
+      };
+
+      const data = await axios.request(options);
+      if (data.status === 201) {
+        console.log(data, data.data, 'Successful register user!');
+        set(() => ({
+          success: data.data.success,
+          error: false,
+          message: data.data.message,
+          loading: false,
+        }));
+      } else {
+        console.log(data, 'Successful API call but status not 200 upon register user!');
+        return set(() => ({ ...errorHandler(data) }));
+      }
+    } catch (error) {
+      console.log(error, 'Something went wrong upon register user!');
+      return set(() => ({ ...errorHandler(error) }));
+    }
+  },
   loginUser: async (email, password) => {
     const payload = {
       email,
