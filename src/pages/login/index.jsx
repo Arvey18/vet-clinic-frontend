@@ -8,7 +8,7 @@ import FullLayout from '../../layouts/fullLayout';
 import authStore from '../../stores/authStore';
 
 // assets
-import Logo from '../../assets/images/vet_clinic_logo.png';
+import Logo from '../../assets/images/vcs-logo-black.png';
 
 const Login = () => {
   // initialize auth store
@@ -39,9 +39,8 @@ const Login = () => {
         <div className='relative max-w-[1400px] h-full flex items-center mx-auto py-10 px-20 z-[1]'>
           <div className='flex flex-col items-center w-full'>
             {/* logo and branding section */}
-            <div className='flex items-center mb-6 text-4xl font-bold text-gray-900 dark:text-white'>
-              <img className='w-[100px] mr-0' src={Logo} alt='logo' />
-              Veterinary Clinic
+            <div className='flex items-center text-[18px] font-semibold text-white mb-[10px]'>
+              <img className='w-[250px] mx-auto' src={Logo} alt='logo' />
             </div>
 
             {/* content section with the input fields */}
