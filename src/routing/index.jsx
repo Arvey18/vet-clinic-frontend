@@ -6,7 +6,7 @@ import ProtectedRoutes from './protectedRoutes';
 import RestrictedRoutes from './restrictedRoutes';
 
 // pages
-const Dashboard = lazy(() => import('../pages/dashboard'));
+const MainDashboard = lazy(() => import('../pages/mainDashboard'));
 const Login = lazy(() => import('../pages/login'));
 const Register = lazy(() => import('../pages/register'));
 const PageNotFound = lazy(() => import('../pages/404'));
@@ -19,7 +19,7 @@ const RoutesConfig = () => {
           path='/'
           element={
             <Suspense fallback={<></>}>
-              <Dashboard />
+              <MainDashboard />
             </Suspense>
           }
         />

@@ -5,7 +5,7 @@ import authStore from '../../stores/authStore';
 
 const ProtectedRoutes = () => {
   const { user } = authStore();
-  return user !== null ? <Outlet /> : <Navigate to='/login' />;
+  return user !== null ? <Outlet /> : <Navigate to='/login' replace={true} />;
 };
 
 export default ProtectedRoutes;

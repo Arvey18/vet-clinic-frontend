@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // layouts
 import FullLayout from '../../layouts/fullLayout';
@@ -7,11 +8,14 @@ import FullLayout from '../../layouts/fullLayout';
 import authStore from '../../stores/authStore';
 
 // assets
-import Logo from '../../assets/images/vet_clinic_logo.png';
+import Logo from '../../assets/images/vcs-logo-black.png';
 
 const Login = () => {
   // initialize auth store
   const { updateLoading, loginUser, error, message, loading } = authStore();
+
+  // initialize hook navigate
+  const navigate = useNavigate();
 
   // creating refs for input fields
   // using it to get values upon login
@@ -35,9 +39,8 @@ const Login = () => {
         <div className='relative max-w-[1400px] h-full flex items-center mx-auto py-10 px-20 z-[1]'>
           <div className='flex flex-col items-center w-full'>
             {/* logo and branding section */}
-            <div className='flex items-center mb-6 text-4xl font-bold text-gray-900 dark:text-white'>
-              <img className='w-[100px] mr-0' src={Logo} alt='logo' />
-              Veterinary Clinic
+            <div className='flex items-center text-[18px] font-semibold text-white mb-[10px]'>
+              <img className='w-[250px] mx-auto' src={Logo} alt='logo' />
             </div>
 
             {/* content section with the input fields */}
@@ -120,12 +123,15 @@ const Login = () => {
                       </svg>
                     )}
                   </button>
-                  <p className='text-sm font-light text-gray-500 dark:text-gray-400'>
+                  <div className='text-sm font-light text-gray-500 dark:text-gray-400'>
                     Don’t have an account yet?{' '}
-                    <a href='#' className='font-medium text-primary-600 hover:underline dark:text-primary-500'>
+                    <div
+                      onClick={() => navigate('/register')}
+                      className='font-medium inline cursor-pointer text-primary-600 hover:underline dark:text-primary-500'
+                    >
                       Sign up
-                    </a>
-                  </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
