@@ -4,6 +4,9 @@ import { useState, useRef, useEffect } from 'react';
 import NotificationBlock from '../notificationBlock';
 import ScrollbarWrapper from '../scrollbar';
 
+// assets
+import PointingRightHand from '../../assets/images/pointing-right.png';
+
 const AlertHeader = () => {
   // use states
   // set alerts counts for unread
@@ -40,21 +43,24 @@ const AlertHeader = () => {
 
   return (
     <div ref={wrapperRef} className='relative'>
-      <div className='relative cursor-pointer border border-custom-darker-gray rounded-full flex items-center justify-center'>
+      <div
+        onClick={handleClickNotificationBell}
+        className='relative cursor-pointer border border-custom-darker-gray rounded-full flex items-center justify-center'
+      >
         {/* alert text */}
         {alertsCounts > 0 ? (
           <>
             <div className='relative pl-4 px-2 pr-2 font-medium text-sm flex text-custom-dark-gray items-center'>
               <p>
                 You have <span className='relative inline font-bold text-custom-black'>{alertsCounts}</span> unread
-                notifications
+                notifications <img src={PointingRightHand} className='inline ml-1 w-[20px]' alt='pointing-right-hand' />
               </p>
             </div>
             <div className='w-[1px] h-[30px] bg-custom-darker-gray'></div>
           </>
         ) : null}
         {/* alerts icon */}
-        <div className='p-2' onClick={handleClickNotificationBell}>
+        <div className='p-2'>
           {alertsCounts > 0 ? (
             <svg
               xmlns='http://www.w3.org/2000/svg'
