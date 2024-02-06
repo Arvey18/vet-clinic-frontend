@@ -1,10 +1,14 @@
 import { useState } from 'react';
 
 const SearchHeader = () => {
+  // use state
+  // store text inputed in search
   const [searchTerm, setSearchTerm] = useState('');
   console.log(searchTerm);
+
   return (
     <div className='relative group flex flex-row gap-x-[10px]'>
+      {/* search icon */}
       <div>
         <label htmlFor='header-search-input' className='cursor-pointer'>
           <svg
@@ -21,6 +25,7 @@ const SearchHeader = () => {
           </svg>
         </label>
       </div>
+      {/* search input */}
       <div className='flex-1'>
         <input
           className='w-full text-sm cursor-pointer text-custom-darkest-gray placeholder:text-custor-darker-gray focus:ring-0 outline-none text-normal'
