@@ -16,7 +16,7 @@ const RoutesConfig = () => {
     <Routes>
       <Route element={<ProtectedRoutes />}>
         <Route
-          path='/'
+          path='/*'
           element={
             <Suspense fallback={<></>}>
               <MainDashboard />
