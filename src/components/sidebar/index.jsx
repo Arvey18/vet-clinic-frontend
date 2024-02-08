@@ -18,8 +18,6 @@ const Sidebar = () => {
   const location = useLocation();
   const { pathname: path } = location;
 
-  console.log('sidebar');
-
   const { VERSION } = serverConfig;
 
   return (

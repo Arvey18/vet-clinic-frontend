@@ -3,9 +3,13 @@ import WaveHand from '../../assets/images/wave.png';
 
 // constants
 import totalAmountBlock from '../../constants/totalAmountBlocksData';
+import moneyIncomeOutcome from '../../constants/moneyIncomeOutcome';
 
 // components
 import TotalAmountBlock from '../../components/totalAmountsBlock';
+import TableV1 from '../../components/table/v1';
+import AppointmentsBlock from '../../components/appointmentsBlock';
+import TimeTrackerBlock from '../../components/timeTrackerBlock';
 
 const SubDashboardView = () => {
   return (
@@ -29,7 +33,7 @@ const SubDashboardView = () => {
         </div>
       </div>
       {/* view first section */}
-      <div className='grid grid-cols-3 gap-10'>
+      <div className='grid grid-cols-3 gap-10 mb-10'>
         {totalAmountBlock.map((value, key) => {
           return (
             <TotalAmountBlock
@@ -41,6 +45,47 @@ const SubDashboardView = () => {
             />
           );
         })}
+      </div>
+      {/* view second section */}
+      <div className='grid grid-flow-col gap-10'>
+        <div className='col-span-9'>
+          {/* latest patients label */}
+          <div className='mb-10'>
+            <TableV1 />
+          </div>
+          <div className='grid grid-flow-col gap-10'>
+            <div className='col-span-6'>
+              {/* latest income current week computation */}
+              <TotalAmountBlock
+                icon={moneyIncomeOutcome['income'].icon}
+                blockTitle={moneyIncomeOutcome['income'].blockTitle}
+                totalAmount={moneyIncomeOutcome['income'].totalAmount}
+                currentDataToday={moneyIncomeOutcome['income'].currentTodayData}
+                dataGraphIcon={moneyIncomeOutcome['income'].dataGraphIcon}
+                amountIcon={moneyIncomeOutcome['income'].amountIcon()}
+              />
+            </div>
+            <div className='col-span-6'>
+              {/* latest expense current week computation */}
+              <TotalAmountBlock
+                icon={moneyIncomeOutcome['outcome'].icon}
+                blockTitle={moneyIncomeOutcome['outcome'].blockTitle}
+                totalAmount={moneyIncomeOutcome['outcome'].totalAmount}
+                currentDataToday={moneyIncomeOutcome['outcome'].currentTodayData}
+                dataGraphIcon={moneyIncomeOutcome['outcome'].dataGraphIcon}
+                amountIcon={moneyIncomeOutcome['outcome'].amountIcon()}
+              />
+            </div>
+          </div>
+        </div>
+        <div className='col-span-3'>
+          <div className='mb-10'>
+            <AppointmentsBlock />
+          </div>
+          <div>
+            <TimeTrackerBlock />
+          </div>
+        </div>
       </div>
     </div>
   );
