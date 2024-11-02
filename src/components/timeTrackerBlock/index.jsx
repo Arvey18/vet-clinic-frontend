@@ -10,8 +10,8 @@ import isEmpty from '../../utils/isEmpty';
 const TimeTrackerBlock = () => {
   // store current date
   const date = new Date();
-  const [timeIn, setTimein] = useState('Thu Feb 08 2024 07:48:49 GMT+0800 (Philippine Standard Time)');
-  const [timeOut, setTimeOut] = useState('');
+  const [timeIn] = useState('Thu Feb 08 2024 07:48:49 GMT+0800 (Philippine Standard Time)');
+  const [timeOut] = useState('');
   const [renderedHours, setRenderedHours] = useState('');
 
   useEffect(() => {
@@ -76,7 +76,7 @@ const TimeTrackerBlock = () => {
           Rendered Hours: <span className='font-bold text-custom-black'>{renderedHours} hours</span>
         </p>
       </div>
-      <div className='mt-10 text-red-500 italic text-sm'>* You haven't time out yet!</div>
+      <div className='mt-10 text-red-500 italic text-sm'>* You haven&apos;t time out yet!</div>
     </div>
   );
 };
